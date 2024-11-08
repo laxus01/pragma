@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <div class="content__title">
+      <label class="text">Catbrees</label>
+    </div>
+    <div class="content__search">
+      <div class="content__search--input">
+        <div class="search">
+          <ion-input
+            placeholder="Buscar"
+            name="round"
+            type="round"
+            [(ngModel)]="keyword"
+            [clearInput]="true"
+            (ionChange)="onSearch($event)"
+          ></ion-input>
+          <ion-icon name="search"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <div class="card" *ngFor="let item of breeds">
+      <div class="card__header">
+        <div>{{item.name}}</div>
+        <div>Mas...</div>
+      </div>
+      <div class="card__image"></div>
+      <div class="card__footer">
+        <div>{{item.origin}}</div>
+        <div>{{item.intelligence}}</div>
+      </div>
+    </div>
+  </div>
+</ion-content>
