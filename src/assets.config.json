@@ -1,0 +1,24 @@
+{
+  "platforms": {
+    "android": {
+      "icon": {
+        "source": "resources/icon.png",
+        "output": "android/app/src/main/res/"
+      },
+      "splash": {
+        "source": "resources/splash.png",
+        "output": "android/app/src/main/res/"
+      }
+    },
+    "ios": {
+      "icon": {
+        "source": "resources/icon.png",
+        "output": "ios/App/App/Assets.xcassets/AppIcon.appiconset"
+      },
+      "splash": {
+        "source": "resources/splash.png",
+        "output": "ios/App/App/Assets.xcassets/Splash.imageset"
+      }
+    }
+  }
+}

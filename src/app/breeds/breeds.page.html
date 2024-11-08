@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <div class="content">
     <div class="content__title">
-      <label class="text">Catbrees</label>
+      <label class="title">Catbrees</label>
     </div>
     <div class="content__search">
       <div class="content__search--input">
@@ -23,15 +23,15 @@
     </div>
     <div class="card" *ngFor="let item of imagesWithBread">
       <div class="card__header">
-        <div>{{item.breeds[0].name}}</div>
-        <div (click)="goToDetail(item.id)">Mas...</div>
+        <div class="subtitle">{{item.breeds[0].name}}</div>
+        <div class="subtitle" (click)="goToDetail(item.id)">Mas...</div>
       </div>
       <div class="card__image">
         <ion-img [src]="item.url"></ion-img>
       </div>
       <div class="card__footer">
-        <div>{{item.breeds[0].origin}}</div>
-        <div>{{item.breeds[0].intelligence}}</div>
+        <div class="subtitle">{{item.breeds[0].origin}}</div>
+        <div class="subtitle">{{item.breeds[0].intelligence}}</div>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
   <div *ngIf="imagesWithBread.length === 0 && stateFilter">
     <div class="card">
       <div class="card__image">
-        <label class="text">Busqueda sin coincidencias</label>
+        <label class="subtitle">Busqueda sin coincidencias</label>
       </div>
     </div>
   </div>
