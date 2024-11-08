@@ -1,13 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detail</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="content" *ngIf="detail">
+    <div class="content__title">
+      <div class="content__title left">
+        <ion-icon name="chevron-back-outline" (click)="goBack()"></ion-icon>
+      </div>
+      <div class="content__title right">
+        <label class="text">{{detail.breeds[0].name}}</label>
+      </div>
+    </div>
+    <div class="content__above">
+      <ion-img [src]="detail.url"></ion-img>
+    </div>
+    <div class="content__lower">
+      <div class="content__lower detail">
+        <div>Description: {{detail.breeds[0].description}}</div>
+        <div>Origin: {{detail.breeds[0].origin}}</div>
+        <div>Intelligence {{detail.breeds[0].intelligence}}</div>
+        <div>Adaptability: {{detail.breeds[0].adaptability}}</div>
+        <div>Life span: {{detail.breeds[0].life_span}}</div>
+      </div>
+    </div>
+  </div>
 </ion-content>

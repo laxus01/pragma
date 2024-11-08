@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
-
 export class ApiService {
   constructor(private http: HttpClient) {}
 
@@ -13,7 +12,13 @@ export class ApiService {
     return this.http.get(`${environment.apiBaseUrl}/breeds`);
   }
 
-  getBreedById(id: string = "abys") {
-    return this.http.get(`${environment.apiBaseUrl}/images/search?breed_ids=${id}`);
+  getImagesWithBread(currentPage: number) {
+    return this.http.get(
+      `${environment.apiBaseUrl}/images/search?has_breeds=1&page=${currentPage}&limit=10&api_key=${environment.apiKey}`
+    );
+  }
+
+  getImageBreedById(id: string) {
+    return this.http.get(`${environment.apiBaseUrl}/images/${id}`);
   }
 }

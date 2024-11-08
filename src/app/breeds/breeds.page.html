@@ -11,23 +11,48 @@
             name="round"
             type="round"
             [(ngModel)]="keyword"
-            [clearInput]="true"
-            (ionChange)="onSearch($event)"
           ></ion-input>
-          <ion-icon name="search"></ion-icon>
+          <ion-icon
+            name="close-circle-outline"
+            *ngIf="keyword !== ''"
+            (click)="onClear()"
+          ></ion-icon>
+          <ion-icon name="search" (click)="onSearch()"></ion-icon>
         </div>
       </div>
     </div>
-    <div class="card" *ngFor="let item of breeds">
+    <div class="card" *ngFor="let item of imagesWithBread">
       <div class="card__header">
-        <div>{{item.name}}</div>
-        <div>Mas...</div>
+        <div>{{item.breeds[0].name}}</div>
+        <div (click)="goToDetail(item.id)">Mas...</div>
       </div>
-      <div class="card__image"></div>
+      <div class="card__image">
+        <ion-img [src]="item.url"></ion-img>
+      </div>
       <div class="card__footer">
-        <div>{{item.origin}}</div>
-        <div>{{item.intelligence}}</div>
+        <div>{{item.breeds[0].origin}}</div>
+        <div>{{item.breeds[0].intelligence}}</div>
       </div>
     </div>
   </div>
+
+  <div *ngIf="imagesWithBread.length === 0 && stateFilter">
+    <div class="card">
+      <div class="card__image">
+        <label class="text">Busqueda sin coincidencias</label>
+      </div>
+    </div>
+  </div>
+
+  <ion-infinite-scroll
+    *ngIf="!stateFilter"
+    threshold="100px"
+    (ionInfinite)="loadData($event)"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más datos..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
